@@ -13,9 +13,9 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
         let topicSection = Tab(response.data.topics);
         topicContainer.appendChild(topicSection);
     })
-    .call(error => {
+    .catch(error => {
         console.log('Une Erreur:', error)
-    } )
+    })
 
 function Tab(){
 
@@ -25,4 +25,5 @@ function Tab(){
 
     return tabDiv;
 }
+
 const topicContainer = document.querySelector('.topics');
