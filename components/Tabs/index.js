@@ -17,7 +17,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
         console.log('Une Erreur:', error)
     })
 
-function Tab(){
+function Tab(info){
 
     const tabDiv = document.createElement('div');
     tabDiv.textContent = 'topic here';
