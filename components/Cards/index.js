@@ -18,23 +18,62 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-     axios.get('https:/lambda-times-backend.herokuapp.com/articles')
-    .then(response => {
+     axios.get('https:/lambda-times-backend.herokuapp.com/articles').then(response => {
+
+        response.data.articles['javascript'].forEach(element => {
+            let cc = Card(element.headline, element.authorPhoto, element.authorName);
+            cardContainer.appendChild(cc);
+ 
+        });
+
+        response.data.articles['bootstrap'].forEach(element => {
+            let cc = Card(element.headline, element.authorPhoto, element.authorName);
+            cardContainer.appendChild(cc);
+        });
+
+        response.data.articles['technology'].forEach(element => {
+            let cc = Card(element.headline, element.authorPhoto, element.authorName);
+            cardContainer.appendChild(cc);
+        });
+
+        response.data.articles['jquery'].forEach(element => {
+            let cc = Card(element.headline, element.authorPhoto, element.authorName);
+            cardContainer.appendChild(cc);
+        });
+
+        response.data.articles['node'].forEach(element => {
+            let cc = Card(element.headline, element.authorPhoto, element.authorName);
+            cardContainer.appendChild(cc);
+        });
+     })
+
+        // const  articles = [];
+        // const articles2 = response.data.articles;
+        // const articles3 = Object.keys(articles2);
+
+        // const articles4 = articles3.forEach(element => {
+        //     articles2[element];
+        // });
+
+        // console.log(articles4)
         
-       response.data.articles['javascript'].forEach(element => {
-           let cc = Card(element.headline, element.authorPhoto, element.authorName);
-           cardContainer.appendChild(cc);
+        // // console.log(articles2);
 
-           console.log(cardContainer);
-       });
+        // // console.log(articles3);
 
-       
-    })
+        // articles.forEach(element => {
+        //     cardCointainer.appendChild(Card(element));
+        //         }
+
+    
     .catch(error => {
         console.log('Error:', error)
-    })
+    });
+    
+const cardContainer = document.querySelector('.cards-container');
 
-function Card (cardData){
+
+function Card (headline, authorPhoto, authorName){
 
     //declaration of variables 
 
@@ -47,9 +86,9 @@ function Card (cardData){
 
     //add contents to elements 
 
-    headlineDiv.texContent = cardData.headline;
-    img.setAttribute('src', cardData.authorPhoto);
-    authorNm.textContent = `By ${cardData.authorName}`;
+    headlineDiv.texContent = headline;
+    img.setAttribute('src', authorPhoto);
+    authorNm.textContent = `By ${authorName}`;
 
     //add attributes to elements
 
@@ -67,5 +106,3 @@ function Card (cardData){
 
     return cardDiv;
 }
-
-const cardContainer = document.querySelector('.cards-container');
